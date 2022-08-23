@@ -11,7 +11,8 @@ namespace CapaDatos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TIPO_IDENTIFICACION
     {
         public TIPO_IDENTIFICACION()
@@ -20,6 +21,8 @@ namespace CapaDatos.Models
         }
     
         public long dbid { get; set; }
+
+        [Display (Name ="Tipo de Identificacion")]
         public string Descripcion { get; set; }
     
         public virtual ICollection<CLIENTES> CLIENTES { get; set; }

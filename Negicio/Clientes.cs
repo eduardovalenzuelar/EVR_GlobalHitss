@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using CapaDatos.Models;
 
+
 namespace Negocio
 {
 
@@ -16,13 +17,27 @@ namespace Negocio
     {
         private TEST_GLOBALHITSSEntities1 db = new TEST_GLOBALHITSSEntities1();
 
-        public Object numero()
+        public Object ListarClientes()
         {
             var cLIENTES = db.CLIENTES.Include(c => c.TIPO_IDENTIFICACION);
             return (cLIENTES.ToList());
         }
-        public void prueba()
+
+
+        public object VerDetalle(long? IdCliente)
         {
+
+            if (IdCliente == null)
+            {
+                return null;
+            }
+            CLIENTES cLIENTES = db.CLIENTES.Find(IdCliente);
+            if (cLIENTES == null)
+            {
+                return null;
+            }
+
+            return (cLIENTES);
 
         }
     }

@@ -11,50 +11,31 @@ using CapaDatos.Models;
 
 
 
-
-
 namespace EVR_GlobalHitss.Controllers
 {
     public class CLIENTESController : Controller
     {
         private TEST_GLOBALHITSSEntities1 db = new TEST_GLOBALHITSSEntities1();
 
-        // GET: CLIENTES
         public ActionResult Index()
         {
-            //var cLIENTES = db.CLIENTES.Include(c => c.TIPO_IDENTIFICACION);
 
             var objNegocio = new Negocio.Clientes();
-
-            
-            return View(objNegocio.numero());
+            return View(objNegocio.ListarClientes());
         }
 
-        // GET: CLIENTES/Details/5
         public ActionResult Details(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CLIENTES cLIENTES = db.CLIENTES.Find(id);
-            if (cLIENTES == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cLIENTES);
+            var objNegocio = new Negocio.Clientes();
+            return View(objNegocio.VerDetalle(id));
         }
 
-        // GET: CLIENTES/Create
         public ActionResult Create()
         {
             ViewBag.dbidTipoIdentificacion = new SelectList(db.TIPO_IDENTIFICACION, "dbid", "Descripcion");
             return View();
         }
 
-        // POST: CLIENTES/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "dbid,dbidTipoIdentificacion,Nombre,Numero_identificacion,email,Movil,Direccion,Direccion_Instalacion,Fechacreacion,FechaModificacion,Estado")] CLIENTES cLIENTES)
@@ -70,7 +51,7 @@ namespace EVR_GlobalHitss.Controllers
             return View(cLIENTES);
         }
 
-        // GET: CLIENTES/Edit/5
+
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -86,9 +67,6 @@ namespace EVR_GlobalHitss.Controllers
             return View(cLIENTES);
         }
 
-        // POST: CLIENTES/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "dbid,dbidTipoIdentificacion,Nombre,Numero_identificacion,email,Movil,Direccion,Direccion_Instalacion,Fechacreacion,FechaModificacion,Estado")] CLIENTES cLIENTES)

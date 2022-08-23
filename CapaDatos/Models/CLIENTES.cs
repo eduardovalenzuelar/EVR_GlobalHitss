@@ -11,21 +11,30 @@ namespace CapaDatos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CLIENTES
     {
         public long dbid { get; set; }
+
+        [Display (Name ="Tipo de Identificacion")]
         public long dbidTipoIdentificacion { get; set; }
+
         public string Nombre { get; set; }
+
+        [Display(Name = "Numero Identificacion")]
         public string Numero_identificacion { get; set; }
         public string email { get; set; }
         public long Movil { get; set; }
         public string Direccion { get; set; }
+        [Display(Name = "Direccion de Instalacion")]
         public string Direccion_Instalacion { get; set; }
         public Nullable<System.DateTime> Fechacreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
+        [Display(Name = "Activo / Inactivo")]
         public int Estado { get; set; }
-    
+
+        [Display(Name = "Tipo de Identificacion")]
         public virtual TIPO_IDENTIFICACION TIPO_IDENTIFICACION { get; set; }
     }
 }
