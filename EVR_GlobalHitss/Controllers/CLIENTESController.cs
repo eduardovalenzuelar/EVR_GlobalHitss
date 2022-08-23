@@ -106,6 +106,10 @@ namespace EVR_GlobalHitss.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult CambioEstado(long? id)
+        {
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -30,12 +30,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Direccion_Instalacion)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fechacreacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaModificacion)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
@@ -65,12 +60,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Direccion_Instalacion)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fechacreacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaModificacion)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
@@ -78,9 +68,10 @@
             @Html.DisplayFor(modelItem => item.TIPO_IDENTIFICACION.Descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.dbid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.dbid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.dbid })
+            @Html.ActionLink("Edit", "Edit", new { id = item.dbid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.dbid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.dbid })
+            @Html.ActionLink("Cambiar Estado", "CambioEstado", new { id = item.dbid })
         </td>
     </tr>
 }

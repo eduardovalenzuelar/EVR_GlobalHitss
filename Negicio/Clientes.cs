@@ -40,6 +40,13 @@ namespace Negocio
             return (cLIENTES);
 
         }
-    }
+        public object CambioEstado(long? IdCliente)
+        {
+            CLIENTES cLIENTES = db.CLIENTES.Find(IdCliente);
+            db.SP_CLIENTE_CAMBIO_ESTADO(IdCliente);
+            return null;
+        }
+
+     }
 }
 
