@@ -1,4 +1,5 @@
 ﻿using System;
+using Negocio;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,19 +7,27 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using EVR_GlobalHitss.Models;
+using CapaDatos.Models;
+
+
+
+
 
 namespace EVR_GlobalHitss.Controllers
 {
     public class CLIENTESController : Controller
     {
-        private TEST_GLOBALHITSSEntities2 db = new TEST_GLOBALHITSSEntities2();
+        private TEST_GLOBALHITSSEntities1 db = new TEST_GLOBALHITSSEntities1();
 
         // GET: CLIENTES
         public ActionResult Index()
         {
-            var cLIENTES = db.CLIENTES.Include(c => c.TIPO_IDENTIFICACION);
-            return View(cLIENTES.ToList());
+            //var cLIENTES = db.CLIENTES.Include(c => c.TIPO_IDENTIFICACION);
+
+            var objNegocio = new Negocio.Clientes();
+
+            
+            return View(objNegocio.numero());
         }
 
         // GET: CLIENTES/Details/5
@@ -53,7 +62,6 @@ namespace EVR_GlobalHitss.Controllers
             if (ModelState.IsValid)
             {
                 db.CLIENTES.Add(cLIENTES);
-              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -87,7 +95,7 @@ namespace EVR_GlobalHitss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cLIENTES).State = EntityState.Modified;
+                db.Entry(cLIENTES).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
