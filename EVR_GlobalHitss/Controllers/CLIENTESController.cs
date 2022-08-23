@@ -108,6 +108,8 @@ namespace EVR_GlobalHitss.Controllers
         }
         public ActionResult CambioEstado(long? id)
         {
+            var objNegocio = new Negocio.Clientes();
+            objNegocio.CambioEstado(id);
             return RedirectToAction("Index");
         }
 
